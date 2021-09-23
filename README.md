@@ -1,6 +1,6 @@
 # Helm Charts
 
-Collection of Helm (https://helm.sh/) charts used at @InseeFr
+Collection of Helm (https://helm.sh/) Charts used at @InseeFr
 
 ## Usage
 
@@ -11,3 +11,7 @@ helm repo add inseefr https://inseefr.github.io/Helm-Charts
 ```
 
 The repo is also browsable directly https://inseefr.github.io/Helm-Charts/index.yaml
+
+## Developer's note
+
+Github Actions will automatically release Charts when version number is modified on main branch.
