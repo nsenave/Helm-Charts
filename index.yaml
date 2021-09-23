@@ -1,0 +1,29 @@
+apiVersion: v1
+entries:
+  pogues:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2021-09-23T16:36:44.865573689Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.11
+    description: A Helm chart for Kubernetes
+    digest: 55177d4622075efa2480a61908de65a1ed4c64ed9263a05e6e9e96c1c4a126d6
+    name: pogues
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/pogues-0.1.0/pogues-0.1.0.tgz
+    version: 0.1.0
+  queen:
+  - apiVersion: v2
+    appVersion: 0.4.0
+    created: "2021-09-23T16:36:44.990561175Z"
+    description: A Helm chart for Kubernetes
+    digest: 442131289e7a49398022c7d6baeee807c920626a26dd66ed14e3db7275f67bc0
+    name: queen
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.1.0/queen-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-09-23T16:36:44.990568576Z"
