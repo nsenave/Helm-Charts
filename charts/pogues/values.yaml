@@ -213,23 +213,23 @@ postgresql:
   postgresqlDatabase: pogues-db
 
   primary:
-  extraInitContainers:
-    - name: import-dump
-      image: busybox
-      command:
-        [
-          "wget",
-          "https://sample/backup.sql",
-          "--output-document=/import/backup.sql",
-        ]
-      volumeMounts:
-        - mountPath: /import
-          name: import-volume
+    extraInitContainers:
+      - name: import-dump
+        image: busybox
+        command:
+          [
+            "wget",
+            "https://sample/backup.sql",
+            "--output-document=/import/backup.sql",
+          ]
+        volumeMounts:
+          - mountPath: /import
+            name: import-volume
 
-  extraVolumes:
-    - name: import-volume
-      emptyDir: {}
+    extraVolumes:
+      - name: import-volume
+        emptyDir: {}
 
-  extraVolumeMounts:
-    - name: import-volume
-      mountPath: "/docker-entrypoint-initdb.d"
+    extraVolumeMounts:
+      - name: import-volume
+        mountPath: "/docker-entrypoint-initdb.d"
