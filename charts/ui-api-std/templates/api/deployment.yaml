@@ -47,16 +47,19 @@ spec:
           #     port: http
           resources:
             {{- toYaml .Values.api.resources | nindent 12 }}
-          volumeMounts:
-            - name: {{ include "app.api.fullname" .}}-config-volume
-              mountPath: "/usr/local/tomcat/webapps/config"
-      volumes:
-        - name: {{ include "app.api.fullname" .}}-config-volume
-          configMap:
-            name:  {{ include "app.api.fullname" .}}-config
-            items:
-              - key: properties
-                path: rmspogfo.properties
+          env:             
+          {{- if .Values.api.env }}
+            {{- range $key, $value := .Values.api.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+            {{- end -}}
+          {{- end }}
+            {{- range $key, $value := .Values.api.envValueFrom }}
+            - name: {{ $key | quote }}
+              valueFrom:
+                {{ toYaml $value | nindent 16 }}
+            {{- end }}
+
       {{- with .Values.api.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
