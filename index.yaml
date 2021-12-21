@@ -40,6 +40,16 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/pogues-0.1.0/pogues-0.1.0.tgz
     version: 0.1.0
+  postgresql-crunchy-instance:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-12-21T15:46:27.725265515Z"
+    description: A Helm chart for Kubernetes
+    digest: fa634d8632c7aac4e66acde46426cb66572fe37584ef4541be1a23e21bc3e507
+    name: postgresql-crunchy-instance
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/postgresql-crunchy-instance-0.0.1/postgresql-crunchy-instance-0.0.1.tgz
+    version: 0.0.1
   queen:
   - apiVersion: v2
     appVersion: 0.4.0
@@ -51,4 +61,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.1.0/queen-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-21T15:41:47.961678997Z"
+generated: "2021-12-21T15:46:27.725274215Z"
