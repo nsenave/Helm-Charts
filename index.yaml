@@ -3,6 +3,25 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 0.0.1
+    created: "2021-12-21T15:48:01.02090443Z"
+    dependencies:
+    - alias: postgresql-bitnami
+      condition: postgresql-bitnami.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 10.3.11
+    - condition: postgresql-crunchy-operator.enabled
+      name: postgresql-crunchy-instance
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.0.1
+    description: A Helm chart for Kubernetes
+    digest: 684eca0682caeb2737160ab85a0b9d89636955cd1d46634434a82353ea05cf62
+    name: app
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/app-0.1.2/app-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 0.0.1
     created: "2021-12-21T15:41:47.961658697Z"
     dependencies:
     - alias: postgresql-bitnami
@@ -61,4 +80,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.1.0/queen-0.1.0.tgz
     version: 0.1.0
-generated: "2021-12-21T15:46:27.725274215Z"
+generated: "2021-12-21T15:48:01.02091683Z"
