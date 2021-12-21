@@ -1,5 +1,15 @@
 apiVersion: v1
 entries:
+  app:
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2021-12-21T13:53:24.413505272Z"
+    description: A Helm chart for Kubernetes
+    digest: 8a9784237a4bd0da6eb830bd448a7d88d89fe85c680a2690440e1333a51e7703
+    name: app
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/app-0.1.0/app-0.1.0.tgz
+    version: 0.1.0
   pogues:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -26,4 +36,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.1.0/queen-0.1.0.tgz
     version: 0.1.0
-generated: "2021-09-23T16:36:44.990568576Z"
+generated: "2021-12-21T13:53:24.413511272Z"
