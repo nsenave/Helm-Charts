@@ -189,6 +189,13 @@ ui:
 
   affinity: {}
 
-postgresql:
-  enabled: true
+postgresql-crunchy-operator:
+  enabled: false
   version: 13
+
+postgresql-bitnami:
+  enabled: false
+  fullnameOverride: hostname
+  postgresqlUsername: user
+  postgresqlPassword: password
+  postgresqlDatabase: app-db

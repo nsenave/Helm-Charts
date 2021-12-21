@@ -1,12 +1,12 @@
-{{- if .Values.postgresql.enabled }}
+{{- if .Values.postgresql-crunchy-operator.enabled }}
 apiVersion: postgres-operator.crunchydata.com/v1beta1
 kind: PostgresCluster
 metadata:
   name: {{ include "app.ui.fullname" . }}
   labels:
-    {{- include "app.postgresql.labels" . | nindent 4 }}
+    {{- include "app.postgresql-crunchy-operator.labels" . | nindent 4 }}
 spec:
-  postgresVersion: {{ .Values.postgresql.version }}
+  postgresVersion: {{ .Values.postgresql-crunchy-operator.version }}
   instances:
     - name: instance1
       replicas: 1
