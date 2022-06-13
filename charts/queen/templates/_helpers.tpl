@@ -108,17 +108,17 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*Create the name of the service account to use*/}}
 
 {{- define "queen.api.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "queen.api.fullname" .) .Values.serviceAccount.name }}
+{{- if .Values.api.serviceAccount.create -}}
+    {{ default (include "queen.api.fullname" .) .Values.api.serviceAccount.name }}
 {{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
+    {{ default "default" .Values.api.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
 
 {{- define "queen.ui.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create -}}
-    {{ default (include "queen.ui.fullname" .) .Values.serviceAccount.name }}
+{{- if .Values.ui.serviceAccount.create -}}
+    {{ default (include "queen.ui.fullname" .) .Values.ui.serviceAccount.name }}
 {{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
+    {{ default "default" .Values.ui.serviceAccount.name }}
 {{- end -}}
 {{- end -}}
