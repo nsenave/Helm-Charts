@@ -1,0 +1,13 @@
+apiVersion: v2
+name: stromae-v2
+description: A Helm chart for Stromae API, UI and DB
+
+dependencies:
+  - name: postgresql
+    condition: postgresql.enabled
+    version: 11.1.26
+    repository: https://charts.bitnami.com/bitnami
+
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
