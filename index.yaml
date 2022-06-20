@@ -124,4 +124,20 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.1.0/queen-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-13T09:27:48.69776743Z"
+  stromae-v2:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-20T16:55:43.057619431Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.1.26
+    description: A Helm chart for Stromae API, UI and DB
+    digest: bf9b3a301180c3892ebb26c399574d5632876e3d3df01460c29ba3f952793c31
+    name: stromae-v2
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
+    version: 0.1.0
+generated: "2022-06-20T16:55:43.057641931Z"
