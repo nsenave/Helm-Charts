@@ -1,6 +1,6 @@
 # Stromae V2 Helm Chart
 
-Helm chart to deploy Stromae UI, Queen Back Office (Queen and Stromae as the same Back Office) and Postgres databasefrom the chart proposed by Bitami
+Helm chart to deploy Stromae UI, Queen Back Office (Queen and Stromae as the same Back Office) and Postgres database from the chart proposed by Bitami
 
 This chart is not fully generic but we tried to be as less specific as possible
 
