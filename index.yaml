@@ -124,6 +124,17 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.1.0/queen-0.1.0.tgz
     version: 0.1.0
+  sonor:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-06-21T09:12:33.05671016Z"
+    description: A Helm chart for Kubernetes
+    digest: 7a276628081dc2b3b1646ca2d8804b52774c5a23eec35669df24d4eafe1c0031
+    name: sonor
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/sonor-0.1.4/sonor-0.1.4.tgz
+    version: 0.1.4
   stromae-v2:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -140,4 +151,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-20T16:55:43.057641931Z"
+generated: "2022-06-21T09:12:33.05672626Z"
