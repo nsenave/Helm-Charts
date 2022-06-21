@@ -81,6 +81,6 @@ readinessProbe:
 
 This part is still in progress.
 
-It's possible to enabled metric for the api. It is not finished and some changes must be needed. The aim is to connect a prometheus operator. 
+It's possible to enable metric for the api. It is not finished and some changes must be needed. The aim is to connect a prometheus operator. 
 
 See `api/metrics-svc.yaml` and `api/servicemonitor.yaml` and `values.yaml` in the `api.metrics` block.
