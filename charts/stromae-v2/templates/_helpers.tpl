@@ -43,6 +43,19 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
+{{- define "stromae.postgresql.fullname" -}}
+{{- if .Values.postgresql.fullnameOverride -}}
+{{- .Values.postgresql.fullnameOverride | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- $name := default "postgresql" .Values.postgresql.nameOverride -}}
+{{- if contains $name .Release.Name -}}
+{{- .Release.Name | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
 {{/*
 Create chart name and version as used by the chart label.
 */}}
@@ -56,6 +69,20 @@ Create chart name and version as used by the chart label.
 
 {{- define "stromae.ui.chart" -}}
 {{- printf "stromae-ui" -}}
+{{- end -}}
+
+{{/*
+Allow the release namespace to be overridden for multi-namespace deployments in combined charts.
+*/}}
+{{- define "stromae.namespace" -}}
+    {{- print .Release.Namespace -}}
+{{- end -}}
+{{- define "stromae.api.serviceMonitor.namespace" -}}
+    {{- if .Values.api.metrics.serviceMonitor.namespace -}}
+        {{- print .Values.api.metrics.serviceMonitor.namespace -}}
+    {{- else -}}
+        {{- include "stromae.namespace" . -}}
+    {{- end }}
 {{- end -}}
 
 {{/*

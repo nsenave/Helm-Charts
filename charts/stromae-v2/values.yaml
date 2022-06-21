@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 ui:
-  enabled: true
+  enabled: false
   replicaCount: 1
 
   image:
@@ -175,9 +175,32 @@ api:
 
   env: {}
 
+  metrics:
+    enabled: false
+
+    service:
+      annotations:
+        prometheus.io/scrape: "false"
+        prometheus.io/port: "{{ .Values.metrics.service.ports.metrics }}"
+        prometheus.io/path: "/metrics"
+      type: ClusterIP
+      ports:
+        metrics: 9216
+
+    serviceMonitor:
+      enabled: false
+      namespace: ""
+      interval: 30s
+      scrapeTimeout: ""
+      labels: {}
+      selector: {}
+      honorLabels: false
+      jobLabel: ""
+
 postgresql:
-  enabled: false
-  fullnameOverride: stromae-db
+  enabled: true
+  fullnameOverride: ""
+  nameOverride: ""
   auth:
     username: username
     password: userPassword

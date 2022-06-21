@@ -2,7 +2,6 @@
 
 Helm chart to deploy Stromae UI, Queen Back Office (Queen and Stromae as the same Back Office) and Postgres databasefrom the chart proposed by Bitami
 
-
 This chart is not fully generic but we tried to be as less specific as possible
 
 ## Environment values :
@@ -25,13 +24,13 @@ api:
     key: values
 ```
 
-Environnement values concerning the database such as host, schema, password and username are already pass to postgres. So we decided to add the specifique key in the configmap-api. We are aware that this point needs to be improved
+Environnement values concerning the database such as host, schema, password and username are already pass to postgres. So we decided to pass them to the api throught the environement values in the `api\deployment.yaml`
 
 ## LivenessProb and ReadinessProb :
 
 ### API :
 
-This point is visibled in the `deployment-api.yaml`. The choice of values must be perfected and a startupProb could be usefull.
+This point is visibled in the `api\deployment.yaml`. The choice of values must be perfected.
 
 ```yaml
 livenessProbe:
@@ -52,6 +51,15 @@ readinessProbe:
   periodSeconds: 10
   successThreshold: 1
   timeoutSeconds: 5
+startupProbe:
+  failureThreshold: 30
+  httpGet:
+    path: /api/healthcheck
+    port: http
+    scheme: HTTP
+  periodSeconds: 10
+  successThreshold: 1
+  timeoutSeconds: 1
 ```
 
 ### UI:
@@ -68,3 +76,11 @@ readinessProbe:
     path: /
     port: http
 ```
+
+## Metrics :construction_worker: 
+
+This part is still in progress.
+
+It's possible to enabled metric for the api. It is not finished and some changes must be needed. The aim is to connect a prometheus operator. 
+
+See `api/metrics-svc.yaml` and `api/servicemonitor.yaml` and `values.yaml` in the `api.metrics` block.
