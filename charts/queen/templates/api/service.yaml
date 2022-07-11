@@ -1,8 +1,9 @@
+{{- if .Values.api.enabled -}}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "queen.api.fullname" . }}
-  labels:
+  labels: 
     {{- include "queen.api.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.api.service.type }}
@@ -11,5 +12,6 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  selector:
+  selector: 
     {{- include "queen.api.selectorLabels" . | nindent 4 }}
+{{- end }}
