@@ -1,0 +1,17 @@
+{{- if .Values.api.enabled -}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "pearl.api.fullname" . }}-test-connection"
+  labels:
+    {{- include "pearl.api.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "pearl.api.fullname" . }}:{{ .Values.api.service.port }}']
+  restartPolicy: Never
+{{- end -}}
