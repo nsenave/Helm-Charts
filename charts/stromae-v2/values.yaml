@@ -89,7 +89,7 @@ ui:
   env: {}
 
 api:
-  enabled: true
+  enabled: false
   replicaCount: 1
 
   image:
@@ -198,7 +198,7 @@ api:
       jobLabel: ""
 
 postgresql:
-  enabled: true
+  enabled: false
   fullnameOverride: ""
   nameOverride: ""
   auth:
