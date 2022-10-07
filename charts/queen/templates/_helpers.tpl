@@ -4,11 +4,11 @@ Expand the name of the chart.
 
 
 {{- define "queen.api.name" -}}
-{{- .Values.api.nameOverride | default (printf "-s-api" .Chart.Name ) }}
+{{- .Values.api.nameOverride | default (printf "-%s-api" .Chart.Name ) }}
 {{- end }}
 
 {{- define "queen.ui.name" -}}
-{{- .Values.ui.nameOverride | default (printf "-s-ui" .Chart.Name ) }}
+{{- .Values.ui.nameOverride | default (printf "-%s-ui" .Chart.Name ) }}
 {{- end }}
 
 {{/*
