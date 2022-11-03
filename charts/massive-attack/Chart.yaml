@@ -2,12 +2,6 @@ apiVersion: v2
 name: massive-attack
 description: A Helm chart for Massive Attack API, UI and DB
 
-dependencies:
-  - name: postgresql
-    condition: postgresql.enabled
-    version: 12.1.0
-    repository: https://charts.bitnami.com/bitnami
-
 type: application
-version: 0.1.1
+version: 0.1.2
 appVersion: "1.16.0"

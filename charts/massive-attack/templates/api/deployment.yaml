@@ -32,20 +32,6 @@ spec:
             {{- toYaml .Values.api.securityContext | nindent 12 }}
           image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
-          {{- if .Values.postgresql.enabled }}
-          env:
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "massive-attack.postgresql.fullname" .}}
-                  key: password
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST
-              value:  {{ include "massive-attack.postgresql.fullname" . }}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
-              value: {{ .Values.postgresql.auth.username | quote}}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
-              value: {{ .Values.postgresql.auth.database | quote}}
-          {{- end }}
           envFrom:
             - configMapRef:
                 name: {{ template "massive-attack.api.fullname" . }}
