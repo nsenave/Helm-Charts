@@ -1,15 +1,17 @@
+{{- if .Values.api.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "massive-attack.fullname" . }}
+  name: {{ template "massive-attack.api.fullname" . }}
   labels:
-    app: {{ template "massive-attack.name" . }}
+    app: {{ template "massive-attack.api.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 data:
-{{- if .Values.env }}
-{{- range $key, $value := .Values.env }}
+{{- if .Values.api.env }}
+{{- range $key, $value := .Values.api.env }}
   {{ $key }}: {{ $value | quote }}
+{{- end -}}
 {{- end -}}
 {{- end -}}
