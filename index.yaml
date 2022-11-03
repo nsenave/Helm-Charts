@@ -44,6 +44,17 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/app-0.1.0/app-0.1.0.tgz
     version: 0.1.0
+  massive-attack:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-11-03T12:39:24.63538078Z"
+    description: A Helm chart for Kubernetes
+    digest: 26c8be5b2b8d5fbafdf9c870a81f650e9a8e0ee35a4d5aea958120fae2d61c57
+    name: massive-attack
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/massive-attack-0.1.0/massive-attack-0.1.0.tgz
+    version: 0.1.0
   pearl:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -287,4 +298,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2022-10-07T11:41:18.102707374Z"
+generated: "2022-11-03T12:39:24.635430581Z"
