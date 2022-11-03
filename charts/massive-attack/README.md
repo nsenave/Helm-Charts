@@ -1,6 +1,6 @@
 # Massive Attack Helm Chart
 
-Helm chart to deploy Massive Attack UI, Back Office and Postgres database from the chart proposed by Bitami
+Helm chart to deploy Massive Attack UI and API from the chart proposed by Bitami
 
 This chart is not fully generic but we tried to be as less specific as possible
 
@@ -23,8 +23,6 @@ api:
   env:
     key: values
 ```
-
-Environnement values concerning the database such as host, schema, password and username are already pass to postgres. So we decided to pass them to the api throught the environement values in the `api\deployment.yaml`
 
 ## LivenessProb and ReadinessProb :
 
