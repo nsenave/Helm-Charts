@@ -47,6 +47,16 @@ entries:
   massive-attack:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-11-08T15:05:43.208714722Z"
+    description: A Helm chart for Massive Attack API, UI and DB
+    digest: 1a19b8a244ea363bc77ccd61441c24f8786f1994f75986b848456d70f84c151e
+    name: massive-attack
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/massive-attack-0.1.5/massive-attack-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-11-08T13:02:03.190081427Z"
     description: A Helm chart for Massive Attack API, UI and DB
     digest: 9dbc690adb083907b647e0f986df0708205c3a4bcea2c77eca16433d184bcff4
@@ -343,4 +353,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2022-11-08T13:02:03.190135127Z"
+generated: "2022-11-08T15:05:43.20976307Z"
