@@ -1,0 +1,13 @@
+apiVersion: v2
+name: coleman-management
+description: A Helm chart for Stromae API, UI and DB
+
+dependencies:
+  - name: postgresql
+    condition: postgresql.enabled
+    version: 12.1.9
+    repository: https://charts.bitnami.com/bitnami
+
+type: application
+version: 0.5.7
+appVersion: "1.16.0"

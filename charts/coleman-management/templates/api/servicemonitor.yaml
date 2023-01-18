@@ -1,0 +1,31 @@
+{{- if and .Values.api.metrics.enabled .Values.api.metrics.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "coleman-management.api.fullname" . }}
+  namespace: {{ include "coleman-management.api.serviceMonitor.namespace" . }}
+  labels: {{- include "coleman-management.api.labels" . | nindent 4 }}
+    app.kubernetes.io/component: metrics  
+spec:
+  {{- if .Values.api.metrics.serviceMonitor.jobLabel }}
+  jobLabel: {{ .Values.api.metrics.serviceMonitor.jobLabel }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "coleman-management.api.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: metrics
+  endpoints:
+    - port: http-metrics
+      {{- if .Values.api.metrics.serviceMonitor.interval }}
+      interval: {{ .Values.api.metrics.serviceMonitor.interval }}
+      {{- end }}
+      {{- if .Values.api.metrics.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.api.metrics.serviceMonitor.scrapeTimeout }}
+      {{- end }}
+      {{- if .Values.api.metrics.serviceMonitor.honorLabels }}
+      honorLabels: {{ .Values.api.metrics.serviceMonitor.honorLabels }}
+      {{- end }}
+  namespaceSelector:
+    matchNames:
+      - "{{ include "coleman-management.namespace" . }}"
+{{- end }}
