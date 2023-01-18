@@ -44,6 +44,33 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/app-0.1.0/app-0.1.0.tgz
     version: 0.1.0
+  coleman-access:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-18T15:51:51.213325466Z"
+    description: A Helm chart for Coleman Access UI and API
+    digest: e6f1256719faf0aff7a89ad15566c967cc73d086c55a21f481f4472438420848
+    name: coleman-access
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-access-0.0.1/coleman-access-0.0.1.tgz
+    version: 0.0.1
+  coleman-management:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-18T15:51:51.458914617Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Stromae API, UI and DB
+    digest: 9bd51a88200e90492dba5d762283fd16045456f6dc3f71708c688f64ac0d52ce
+    name: coleman-management
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-management-0.5.7/coleman-management-0.5.7.tgz
+    version: 0.5.7
   massive-attack:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -110,6 +137,28 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/massive-attack-0.1.0/massive-attack-0.1.0.tgz
     version: 0.1.0
+  moog:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-18T15:51:51.698884062Z"
+    description: A Helm chart for Moog
+    digest: cf1df59310dd003f7ef4c0ee7ad8a936950461a92d311effd992d76d086c815f
+    name: moog
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/moog-0.0.1/moog-0.0.1.tgz
+    version: 0.0.1
+  my-surveys:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-18T15:51:51.905957284Z"
+    description: A Helm chart for Moog
+    digest: 25296795539bad338fb5c3b83231650a65ebc345a182503df3c5cd060ad04024
+    name: my-surveys
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/my-surveys-0.0.1/my-surveys-0.0.1.tgz
+    version: 0.0.1
   pearl:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -378,4 +427,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-18T15:49:25.026543202Z"
+generated: "2023-01-18T15:51:51.906181188Z"
