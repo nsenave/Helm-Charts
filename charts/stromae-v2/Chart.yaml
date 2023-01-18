@@ -5,9 +5,9 @@ description: A Helm chart for Stromae API, UI and DB
 dependencies:
   - name: postgresql
     condition: postgresql.enabled
-    version: 11.6.15
+    version: 12.1.9
     repository: https://charts.bitnami.com/bitnami
 
 type: application
-version: 0.5.7
+version: 0.5.8
 appVersion: "1.16.0"
