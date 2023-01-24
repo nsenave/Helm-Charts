@@ -140,6 +140,16 @@ entries:
   moog:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-01-24T13:23:31.56323795Z"
+    description: A Helm chart for Moog
+    digest: c9b1eeae734995f8152eeef9c2b4a6ae49bf87f1fe47bdad5cbfe6923ed6a354
+    name: moog
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/moog-0.0.2/moog-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-18T15:51:51.698884062Z"
     description: A Helm chart for Moog
     digest: cf1df59310dd003f7ef4c0ee7ad8a936950461a92d311effd992d76d086c815f
@@ -427,4 +437,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-18T15:51:51.906181188Z"
+generated: "2023-01-24T13:23:31.563294952Z"
