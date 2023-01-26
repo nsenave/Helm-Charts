@@ -32,9 +32,11 @@ spec:
             {{- toYaml .Values.api.securityContext | nindent 12 }}
           image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          {{- if and .Values.api.env .Values.api.enabled }}
           envFrom:
             - configMapRef:
                 name: {{ template "massive-attack.api.fullname" . }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 8080

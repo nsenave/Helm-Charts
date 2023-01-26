@@ -3,5 +3,5 @@ name: massive-attack
 description: A Helm chart for Massive Attack API, UI and DB
 
 type: application
-version: 0.1.5
+version: 0.2.0
 appVersion: "1.16.0"

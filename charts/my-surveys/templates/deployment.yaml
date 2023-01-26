@@ -33,9 +33,11 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if and .Values.env }}
           envFrom:
             - configMapRef:
                 name: {{ template "my-surveys.fullname" . }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 80

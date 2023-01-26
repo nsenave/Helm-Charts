@@ -46,9 +46,11 @@ spec:
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
               value: {{ .Values.postgresql.auth.database | quote}}
           {{- end }}
+          {{- if and .Values.api.env .Values.api.enabled }}
           envFrom:
             - configMapRef:
                 name: {{ template "stromae.api.fullname" . }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 8080
