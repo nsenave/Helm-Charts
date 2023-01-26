@@ -206,6 +206,16 @@ entries:
   my-surveys:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-01-26T16:35:08.681528944Z"
+    description: A Helm chart for Moog
+    digest: c4dfea92b24f1b0ff2ed3703eeed49c95ded98761cf82d44edcab03d43c5a98a
+    name: my-surveys
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/my-surveys-0.1.1/my-surveys-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-26T16:19:36.889132841Z"
     description: A Helm chart for Moog
     digest: 8112ceb83c0c40afb0cf93bfe700b4b8734f049dc4f8df7770b2301a03050571
@@ -562,4 +572,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-26T16:19:37.560965292Z"
+generated: "2023-01-26T16:35:08.681620633Z"
