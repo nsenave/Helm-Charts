@@ -47,6 +47,16 @@ entries:
   coleman-access:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-01-26T16:19:36.237082691Z"
+    description: A Helm chart for Coleman Access UI and API
+    digest: 38a05916d872e4e750b2b3930ba8061874987fdf8aff6485a456effb9ec97a1d
+    name: coleman-access
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-access-0.0.2/coleman-access-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-18T15:51:51.213325466Z"
     description: A Helm chart for Coleman Access UI and API
     digest: e6f1256719faf0aff7a89ad15566c967cc73d086c55a21f481f4472438420848
@@ -56,6 +66,21 @@ entries:
     - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-access-0.0.1/coleman-access-0.0.1.tgz
     version: 0.0.1
   coleman-management:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-26T16:19:36.392389869Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Stromae API, UI and DB
+    digest: 38f6d68654135637158810b6864fb52ab0c5d4af3a458976ea1860c192b440a0
+    name: coleman-management
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-management-0.5.8/coleman-management-0.5.8.tgz
+    version: 0.5.8
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-01-18T15:51:51.458914617Z"
@@ -72,6 +97,16 @@ entries:
     - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-management-0.5.7/coleman-management-0.5.7.tgz
     version: 0.5.7
   massive-attack:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-26T16:19:36.532531597Z"
+    description: A Helm chart for Massive Attack API, UI and DB
+    digest: db6972ba54b58ace9f3c9bb16e77b398f6d50185fac70d8187fca8e2c271403e
+    name: massive-attack
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/massive-attack-0.2.0/massive-attack-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-11-08T15:05:43.208714722Z"
@@ -140,6 +175,16 @@ entries:
   moog:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-01-26T16:19:36.751134876Z"
+    description: A Helm chart for Moog
+    digest: 25c22850dd51661ab0bff1eeb287b08b7fc85416216741806f711ef45e951221
+    name: moog
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/moog-0.1.0/moog-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-24T13:23:31.56323795Z"
     description: A Helm chart for Moog
     digest: c9b1eeae734995f8152eeef9c2b4a6ae49bf87f1fe47bdad5cbfe6923ed6a354
@@ -161,6 +206,16 @@ entries:
   my-surveys:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-01-26T16:19:36.889132841Z"
+    description: A Helm chart for Moog
+    digest: 8112ceb83c0c40afb0cf93bfe700b4b8734f049dc4f8df7770b2301a03050571
+    name: my-surveys
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/my-surveys-0.1.0/my-surveys-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-18T15:51:51.905957284Z"
     description: A Helm chart for Moog
     digest: 25296795539bad338fb5c3b83231650a65ebc345a182503df3c5cd060ad04024
@@ -170,6 +225,21 @@ entries:
     - https://github.com/InseeFr/Helm-Charts/releases/download/my-surveys-0.0.1/my-surveys-0.0.1.tgz
     version: 0.0.1
   pearl:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-26T16:19:37.06106398Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Pearl API, UI and DB
+    digest: 7e4162dbb940dcac4401cca32a3fe8552708a6c71c02f23754dff5f6f211d80e
+    name: pearl
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/pearl-0.1.1/pearl-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-07-11T13:44:49.247879244Z"
@@ -225,6 +295,21 @@ entries:
     - https://github.com/InseeFr/Helm-Charts/releases/download/postgresql-crunchy-instance-0.0.1/postgresql-crunchy-instance-0.0.1.tgz
     version: 0.0.1
   queen:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-26T16:19:37.202745725Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Queen API, UI and DB
+    digest: 7f173aebc94927eb162a1866560293d923028e8ce97589c35a685ac581793cde
+    name: queen
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.4.0/queen-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-10-07T11:41:18.10265387Z"
@@ -313,6 +398,16 @@ entries:
   sonor:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-01-26T16:19:37.37528091Z"
+    description: A Helm chart for Sonor
+    digest: dab4991a42fea5c6cac9789f57abaacb729bd0219010aa6a76c0ebe8108ee8ef
+    name: sonor
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/sonor-0.2.0/sonor-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-18T15:49:25.026501602Z"
     description: A Helm chart for Sonor
     digest: bbb4d26d8feb303764c68699dfd8a5f97dac431d89cba4f2ea0fe07343bbb47c
@@ -332,6 +427,21 @@ entries:
     - https://github.com/InseeFr/Helm-Charts/releases/download/sonor-0.1.4/sonor-0.1.4.tgz
     version: 0.1.4
   stromae-v2:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-01-26T16:19:37.560776878Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Stromae API, UI and DB
+    digest: cecaf8d451c2098e786bfcf70e844e120d8f6c8a5c76754da6ecdaa661fb50f0
+    name: stromae-v2
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.6.0/stromae-v2-0.6.0.tgz
+    version: 0.6.0
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-01-24T15:35:57.254265631Z"
@@ -452,4 +562,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-24T15:35:57.254426035Z"
+generated: "2023-01-26T16:19:37.560965292Z"
