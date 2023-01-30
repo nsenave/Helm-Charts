@@ -33,9 +33,9 @@ spec:
           image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           {{- if .Values.postgresql.enabled }}
-          {{ $host := include "coleman-management.postgresql.fullname" . }}
-          {{ $port := int 5432 }}
-          {{ $database := .Values.postgresql.auth.database }}
+          {{ $host := include "postgresql.fullname" . }}
+          {{ $port := include "postgresql.service.port" . }}
+          {{ $database := include "postgresql.database" . }}
           {{ $databaseUrl := printf "jdbc:postgresql://%s:%s/%s" $host $port $database }}
           env:
             - name: SPRING_DATASOURCE_PASSWORD
