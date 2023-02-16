@@ -37,7 +37,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ template "sonor.fullname" . }}
-          {{-end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: 80
