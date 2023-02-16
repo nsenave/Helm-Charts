@@ -423,6 +423,16 @@ entries:
   sonor:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-02-16T12:49:17.484568707Z"
+    description: A Helm chart for Sonor
+    digest: a950f65924faaee113d890025fcc45baa343449cb5dc0a6df80b71e3eb901768
+    name: sonor
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/sonor-0.2.1/sonor-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-26T16:19:37.37528091Z"
     description: A Helm chart for Sonor
     digest: dab4991a42fea5c6cac9789f57abaacb729bd0219010aa6a76c0ebe8108ee8ef
@@ -587,4 +597,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-01-30T09:20:39.450250927Z"
+generated: "2023-02-16T12:49:17.484638911Z"
