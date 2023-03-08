@@ -36,7 +36,7 @@ spec:
           {{ $host := include "postgresql.fullname" . }}
           {{ $port := include "postgresql.service.port" . }}
           {{ $database := include "postgresql.database" . }}
-          {{ $databaseUrl := printf "jdbc:postgresql://%s:%s/%s" $host $port $database }}
+          {{ $databaseUrl := printf "jdbc:postgresql://%s:%.0f/%s" $host $port $database }}
           env:
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
