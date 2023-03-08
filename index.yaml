@@ -68,6 +68,21 @@ entries:
   coleman-management:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-03-08T16:17:07.60984792Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Stromae API, UI and DB
+    digest: 08d756df90ae8f4d1f880fe792ca61fd57c4b74f9963577f61e038c718f1ac43
+    name: coleman-management
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-management-0.6.0/coleman-management-0.6.0.tgz
+    version: 0.6.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-30T09:20:39.450180028Z"
     dependencies:
     - condition: postgresql.enabled
@@ -597,4 +612,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-16T12:49:17.484638911Z"
+generated: "2023-03-08T16:17:07.610014524Z"
