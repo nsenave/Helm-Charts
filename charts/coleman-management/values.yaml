@@ -89,7 +89,7 @@ ui:
   env: {}
 
 api:
-  enabled: false
+  enabled: true
   replicaCount: 1
 
   image:
@@ -198,7 +198,12 @@ api:
       jobLabel: ""
 
 postgresql:
-  enabled: false
+  enabled: true
+  global:
+    postgresql:
+      service:
+        ports:
+          postgresql: 5432
   fullnameOverride: ""
   nameOverride: ""
   auth:
