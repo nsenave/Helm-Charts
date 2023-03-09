@@ -46,7 +46,7 @@ spec:
             - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
               value: {{ .Values.postgresql.auth.database | quote}}
           {{- end }}
-          {{- if and .Values.api.env .Values.api.enabled }}
+          {{- if and .Values.api.enabled .Values.api.env }}
           envFrom:
             - configMapRef:
                 name: {{ template "queen.api.fullname" . }}
@@ -61,6 +61,7 @@ spec:
               path: /api/healthcheck
               port: http
               scheme: HTTP
+            initialDelaySeconds: 600
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 2
@@ -74,6 +75,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 5
           startupProbe:
+            initialDelaySeconds: 150
             failureThreshold: 30
             httpGet:
               path: /api/healthcheck
