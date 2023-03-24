@@ -156,6 +156,28 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/coleman-management-0.5.7/coleman-management-0.5.7.tgz
     version: 0.5.7
+  ddi-access-services:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-24T15:38:19.31297393Z"
+    description: A DDI-Access-Service Helm chart for Kubernetes
+    digest: 8cc75cbd7390d13646b1980ecb58880e64ad194c7e4dd6ac92c2e8dea3d614bb
+    name: ddi-access-services
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/ddi-access-services-0.1.1/ddi-access-services-0.1.1.tgz
+    version: 0.1.1
+  eno-ws:
+  - apiVersion: v2
+    appVersion: 2.4.1
+    created: "2023-03-24T15:38:19.455584972Z"
+    description: A Eno-WS Helm chart for Kubernetes
+    digest: ca0af957bc219934830f8d3b65467900180ee41dcdcd2102329088dbfc0b491c
+    name: eno-ws
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/eno-ws-0.2.1/eno-ws-0.2.1.tgz
+    version: 0.2.1
   massive-attack:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -657,4 +679,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T12:53:21.328259946Z"
+generated: "2023-03-24T15:38:19.455883691Z"
