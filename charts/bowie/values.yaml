@@ -1,0 +1,182 @@
+pogues:
+  ui:
+    image:
+      repository: inseefr/pogues
+      pullPolicy: IfNotPresent
+      tag: ""
+
+    ingress:
+      hosts:
+        - host: chart-example.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+
+    env:
+      API_URL: "https://chart-example-api.local/api"
+
+  api:
+    image:
+      repository: inseefr/pogues-back-office
+      pullPolicy: IfNotPresent
+      tag: ""
+
+    ingress:
+      hosts:
+        - host: chart-example-api.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+
+    environment:
+      ssl: false
+      log:
+        configuration: classpath:log4j2.xml
+      api:
+        host: chart-example-api.local
+        name: ""
+        scheme: https
+      persistence:
+        database:
+          host: pogues-db
+          port: 5432
+          driver: org.postgresql.Driver
+          table: Pogues
+      authentification: NONE
+      role:
+        admin: Administrateur_Pogues
+        user: Utilisateurs_Pogues
+      remote:
+        metadata:
+          url: https://ddi-access-services-example.local/api
+        stromae:
+          host: ""
+          vis:
+            path: ""
+          orbeon:
+            host: ""
+        queen:
+          host: https://queen-sandbox.local
+          vis:
+            path: queen/visualize?questionnaire=
+        stromaev2:
+          vis:
+            url: https://stromae-v2-sandbox.local/visualize?questionnaire=
+        eno:
+          host: eno-example.local
+          scheme: https
+
+  postgresql:
+    fullnameOverride: pogues-db
+    auth:
+      username: Pogues
+      password: Pogues
+      postgresPassword: postgresPassword
+      database: Pogues
+
+eno-ws:
+  enoxml:
+    image:
+      repository: inseefr/eno-ws
+      pullPolicy: IfNotPresent
+      tag: ""
+    ingress:
+      hosts:
+        - host: eno-xml-example.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+  enojava:
+    enabled: true
+    image:
+      repository: inseefr/eno-ws
+      pullPolicy: IfNotPresent
+      tag: ""
+    env:
+      ENO_LEGACY_WS_URL: "https://eno-xml-example.local"
+    ingress:
+      hosts:
+        - host: eno-java-example.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+
+ddi-access-services:
+  image:
+    repository: inseefr/ddi-access-services
+    pullPolicy: IfNotPresent
+    tag: ""
+
+  ingress:
+    hosts:
+      - host: ddi-access-services-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+
+  properties: |-
+    # SSL
+    fr.insee.rmes.force.ssl=false
+    # Log4J configuration File
+    fr.insee.rmespogbo.log.configuration=log4j2.xml
+    # Swagger host
+    fr.insee.rmes.api.host = ddi-access-services-example.local
+    fr.insee.rmes.api.name= /api
+    fr.insee.rmes.api.scheme= https
+    # Metadata service
+
+    fr.insee.rmes.search.DDIItemRepository.impl = DDIItemRepositoryDBImpl
+    fr.insee.rmes.search.db.host = pogues-db
+    fr.insee.rmes.search.db.port = 5432
+    fr.insee.rmes.search.db.schema = Pogues
+    fr.insee.rmes.search.db.user = Pogues
+    fr.insee.rmes.search.db.password = Pogues
+    fr.insee.rmes.search.db.driver = org.postgresql.Driver
+    fr.insee.rmes.search.db.table = ddi_item
+
+queen:
+  ui:
+      enabled: true
+      nameOverride: queen-ui
+      replicaCount: 1
+      image:
+        repository: inseefr/queen
+        tag: ""
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        hosts:
+          - host: queen-sandbox.local
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls:
+          - hosts:
+              - queen-sandbox.local
+      env:
+        QUEEN_URL: https://queen-sandbox.local
+        authenticationType: NONE
+
+stromae-v2:
+  ui:
+      enabled: true
+      nameOverride: stromae-ui
+      replicaCount: 1
+      image:
+        repository: inseefr/stromae
+        tag: ""
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        hosts:
+          - host: stromae-v2-sandbox.local
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls:
+          - hosts:
+              - stromae-v2-sandbox.local
+      env:
+        AUTHENTICATION_TYPE: NONE

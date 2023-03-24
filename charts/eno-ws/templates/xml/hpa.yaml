@@ -1,0 +1,28 @@
+{{- if and .Values.enoxml.enabled .Values.enoxml.autoscaling.enabled}}
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "eno-ws.enoxml.fullname" . }}
+  labels:
+    {{- include "eno-ws.enoxml.labels" . | nindent 4 }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "eno-ws.enoxml.fullname" . }}
+  minReplicas: {{ .Values.enoxml.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.enoxml.autoscaling.maxReplicas }}
+  metrics:
+    {{- if .Values.enoxml.autoscaling.targetCPUUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: {{ .Values.enoxml.autoscaling.targetCPUUtilizationPercentage }}
+    {{- end }}
+    {{- if .Values.enoxml.autoscaling.targetMemoryUtilizationPercentage }}
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: {{ .Values.enoxml.autoscaling.targetMemoryUtilizationPercentage }}
+    {{- end }}
+{{- end }}

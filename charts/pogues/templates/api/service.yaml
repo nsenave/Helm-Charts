@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "pogues.api.fullname" . }}
-  labels:
+  labels: 
     {{- include "pogues.api.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.api.service.type }}
@@ -11,5 +11,5 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
-  selector:
+  selector: 
     {{- include "pogues.api.selectorLabels" . | nindent 4 }}

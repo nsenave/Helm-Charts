@@ -33,6 +33,9 @@ spec:
             {{- toYaml .Values.ui.securityContext | nindent 12 }}
           image: "{{ .Values.ui.image.repository }}:{{ .Values.ui.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.ui.image.pullPolicy }}
+          env:
+          - name: API_URL
+            value: {{ .Values.ui.env.API_URL | quote}}
           ports:
             - name: http
               containerPort: 80
@@ -47,13 +50,6 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.ui.resources | nindent 12 }}
-          env:
-            {{- if .Values.ui.env }}
-              {{- range $key, $value := .Values.ui.env }}
-              - name: {{ $key }}
-                value: {{ $value | quote }}
-              {{- end -}}
-            {{- end }}
       {{- with .Values.ui.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

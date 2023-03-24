@@ -1,0 +1,60 @@
+{{- if .Values.enojava.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "eno-ws.enojava.fullname" . }}
+  labels:
+    {{- include "eno-ws.enojava.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.enojava.autoscaling.enabled }}
+  replicas: {{ .Values.enojava.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "eno-ws.enojava.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.enojava.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "eno-ws.enojava.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.enojava.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "eno-ws.enojava.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.enojava.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.enojava.securityContext | nindent 12 }}
+          image: "{{ .Values.enojava.image.repository }}:{{ .Values.enojava.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.enojava.image.pullPolicy }}
+          env:
+            - name: ENO_LEGACY_WS_URL
+              value: {{ .Values.enojava.env.ENO_LEGACY_WS_URL }}
+            - name: JAVA_OPTS
+              value: '-XX:+UseParallelGC -XX:MaxRAMPercentage=75'
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.enojava.resources | nindent 12 }}
+      {{- with .Values.enojava.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.enojava.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.enojava.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}

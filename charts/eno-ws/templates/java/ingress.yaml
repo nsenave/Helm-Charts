@@ -1,9 +1,9 @@
-{{- if .Values.ui.ingress.enabled -}}
-{{- $fullName := include "pogues.ui.fullname" . -}}
-{{- $svcPort := .Values.ui.service.port -}}
-{{- if and .Values.ui.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
-  {{- if not (hasKey .Values.ui.ingress.annotations "kubernetes.io/ingress.class") }}
-  {{- $_ := set .Values.ui.ingress.annotations "kubernetes.io/ingress.class" .Values.uiingress.className}}
+{{- if and .Values.enojava.enabled .Values.enojava.ingress.enabled}}
+{{- $fullName := include "eno-ws.enojava.fullname" . -}}
+{{- $svcPort := .Values.enojava.service.port -}}
+{{- if and .Values.enojava.ingress.className (not (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion)) }}
+  {{- if not (hasKey .Values.enojava.ingress.annotations "kubernetes.io/ingress.class") }}
+  {{- $_ := set .Values.enojava.ingress.annotations "kubernetes.io/ingress.class" .Values.enojava.ingress.className}}
   {{- end }}
 {{- end }}
 {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
@@ -17,18 +17,18 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}
   labels:
-    {{- include "pogues.ui.labels" . | nindent 4 }}
-  {{- with .Values.ui.ingress.annotations }}
+    {{- include "eno-ws.enojava.labels" . | nindent 4 }}
+  {{- with .Values.enojava.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- if and .Values.ui.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
-  ingressClassName: {{ .Values.ui.ingress.className }}
+  {{- if and .Values.enojava.ingress.className (semverCompare ">=1.18-0" .Capabilities.KubeVersion.GitVersion) }}
+  ingressClassName: {{ .Values.enojava.ingress.className }}
   {{- end }}
-  {{- if .Values.ui.ingress.tls }}
+  {{- if .Values.enojava.ingress.tls }}
   tls:
-    {{- range .Values.ui.ingress.tls }}
+    {{- range .Values.enojava.ingress.tls }}
     - hosts:
         {{- range .hosts }}
         - {{ . | quote }}
@@ -37,14 +37,14 @@ spec:
     {{- end }}
   {{- end }}
   rules:
-    {{- range .Values.ui.ingress.hosts }}
+    {{- range .Values.enojava.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
           {{- range .paths }}
           - path: {{ .path }}
             {{- if and .pathType (semverCompare ">=1.18-0" $.Capabilities.KubeVersion.GitVersion) }}
-            pathType: {{ .pathType }}
+            pathType: Prefix
             {{- end }}
             backend:
               {{- if semverCompare ">=1.19-0" $.Capabilities.KubeVersion.GitVersion }}

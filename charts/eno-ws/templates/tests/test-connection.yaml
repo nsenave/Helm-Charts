@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "eno-ws.enoxml.fullname" . }}-test-connection"
+  labels:
+    {{- include "eno-ws.enoxml.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "eno-ws.enoxml.fullname" . }}:{{ .Values.enoxml.service.port }}']
+  restartPolicy: Never
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "eno-ws.enojava.fullname" . }}-test-connection"
+  labels:
+    {{- include "eno-ws.enojava.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "eno-ws.enojava.fullname" . }}:{{ .Values.enojava.service.port }}']
+  restartPolicy: Never

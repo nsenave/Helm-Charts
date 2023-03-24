@@ -1,0 +1,17 @@
+{{- if .Values.enojava.enabled -}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "eno-ws.enojava.fullname" . }}
+  labels:
+    {{- include "eno-ws.enojava.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.enojava.service.type }}
+  ports:
+    - port: {{ .Values.enojava.service.port }}
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "eno-ws.enojava.selectorLabels" . | nindent 4 }}
+{{- end -}}
