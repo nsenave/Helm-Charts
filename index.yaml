@@ -44,6 +44,38 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/app-0.1.0/app-0.1.0.tgz
     version: 0.1.0
+  bowie:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-03-24T15:50:16.199784254Z"
+    dependencies:
+    - condition: pogues.enabled
+      name: pogues
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.2.0
+    - condition: eno-ws.enabled
+      name: eno-ws
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.2.1
+    - condition: ddi-access-services.enabled
+      name: ddi-access-services
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.1.1
+    - condition: queen.enabled
+      name: queen
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.4.0
+    - condition: stromae-v2.enabled
+      name: stromae-v2
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.6.0
+    description: A Helm chart for Kubernetes
+    digest: b1f802aec22f18065af8ad699654e977d0850d5907a91620fa951c2c94657fb6
+    name: bowie
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/bowie-0.1.0/bowie-0.1.0.tgz
+    version: 0.1.0
   coleman-access:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -679,4 +711,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T15:38:19.455883691Z"
+generated: "2023-03-24T15:50:16.199868853Z"
