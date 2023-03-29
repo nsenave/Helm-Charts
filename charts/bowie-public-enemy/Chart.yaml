@@ -1,0 +1,15 @@
+apiVersion: v2
+name: bowie-public-enemy
+description: A Helm chart for Kubernetes
+
+dependencies:
+  - name: public-enemy
+    version: 0.5.6
+    repository: "https://inseefr.github.io/Helm-Charts"
+  - name: stromae-v2
+    version: 0.6.0
+    repository: "https://inseefr.github.io/Helm-Charts"
+
+type: application
+version: 0.1.0
+appVersion: "2.0.0"
