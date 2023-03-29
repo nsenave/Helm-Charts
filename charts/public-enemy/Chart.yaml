@@ -1,0 +1,13 @@
+apiVersion: v2
+name: public-enemy
+description: A Helm chart for Public Enemy API, UI and DB
+
+dependencies:
+  - name: postgresql
+    condition: postgresql.enabled
+    version: 11.6.15
+    repository: https://charts.bitnami.com/bitnami
+
+type: application
+version: 0.5.6
+appVersion: "2.0.0"

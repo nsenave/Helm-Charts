@@ -1,0 +1,31 @@
+{{- if and .Values.api.metrics.enabled .Values.api.metrics.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "publicEnemy.api.fullname" . }}
+  namespace: {{ include "publicEnemy.api.serviceMonitor.namespace" . }}
+  labels: {{- include "publicEnemy.api.labels" . | nindent 4 }}
+    app.kubernetes.io/component: metrics  
+spec:
+  {{- if .Values.api.metrics.serviceMonitor.jobLabel }}
+  jobLabel: {{ .Values.api.metrics.serviceMonitor.jobLabel }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "publicEnemy.api.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: metrics
+  endpoints:
+    - port: http-metrics
+      {{- if .Values.api.metrics.serviceMonitor.interval }}
+      interval: {{ .Values.api.metrics.serviceMonitor.interval }}
+      {{- end }}
+      {{- if .Values.api.metrics.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.api.metrics.serviceMonitor.scrapeTimeout }}
+      {{- end }}
+      {{- if .Values.api.metrics.serviceMonitor.honorLabels }}
+      honorLabels: {{ .Values.api.metrics.serviceMonitor.honorLabels }}
+      {{- end }}
+  namespaceSelector:
+    matchNames:
+      - "{{ include "publicEnemy.namespace" . }}"
+{{- end }}

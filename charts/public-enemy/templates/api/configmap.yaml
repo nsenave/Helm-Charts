@@ -1,0 +1,17 @@
+{{- if .Values.api.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "publicEnemy.api.fullname" . }}
+  labels:
+    app: {{ template "publicEnemy.api.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- if .Values.api.env }}
+{{- range $key, $value := .Values.api.env }}
+  {{ $key }}: {{ $value | quote }}
+{{- end -}}
+{{- end -}}
+{{- end -}}

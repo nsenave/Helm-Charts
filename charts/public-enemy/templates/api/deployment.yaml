@@ -1,0 +1,95 @@
+{{- if .Values.api.enabled -}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "publicEnemy.api.fullname" . }}
+  labels:
+    {{- include "publicEnemy.api.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.api.autoscaling.enabled }}
+  replicas: {{ .Values.api.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "publicEnemy.api.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/api/configmap.yaml") . | sha256sum }}
+      labels:
+        {{- include "publicEnemy.api.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.api.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "publicEnemy.api.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.api.podSecurityContext | nindent 8 }}
+
+      initContainers:
+        - name: check-db-ready
+          image: postgres:11.6
+          command: ['sh', '-c', 
+            until pg_isready -h {{ include "publicEnemy.postgresql.fullname" . }} -p {{ .Values.postgresql.auth.port}}; 
+            do echo waiting for database; sleep 2; done;]
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.api.securityContext | nindent 12 }}
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .Values.api.profiles}}
+            - name: MANAGEMENT_SERVER_PORT
+              value: '{{ .Values.api.actuatorPort}}'
+          {{- if .Values.postgresql.enabled }}
+            - name: SPRING_DATASOURCE_URL
+              value:  {{ printf "jdbc:postgresql://%s:%.0f/%s" (include "publicEnemy.postgresql.fullname" .) .Values.postgresql.auth.port .Values.postgresql.auth.database | quote }}
+            - name: SPRING_DATASOURCE_USERNAME
+              value: {{ .Values.postgresql.auth.username | quote}}
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "publicEnemy.postgresql.fullname" .}}
+                  key: password
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "publicEnemy.api.fullname" . }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.api.health.liveness.path }}
+              port: {{ .Values.api.actuatorPort }}
+            initialDelaySeconds: {{ .Values.api.health.liveness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.api.health.liveness.periodSeconds }}
+            timeoutSeconds: {{ .Values.api.health.liveness.timeoutSeconds }}
+            failureThreshold: {{ .Values.api.health.liveness.failureThreshold }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.api.health.readiness.path }}
+              port: {{ .Values.api.actuatorPort }}
+            initialDelaySeconds: {{ .Values.api.health.readiness.initialDelaySeconds }}
+            periodSeconds: {{ .Values.api.health.readiness.periodSeconds }}
+            timeoutSeconds: {{ .Values.api.health.readiness.timeoutSeconds }}
+            failureThreshold: {{ .Values.api.health.readiness.failureThreshold }}
+          resources:
+            {{- toYaml .Values.api.resources | nindent 12 }}
+      {{- with .Values.api.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.api.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.api.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end -}}
