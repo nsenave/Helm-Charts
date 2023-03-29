@@ -76,6 +76,24 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/bowie-0.1.0/bowie-0.1.0.tgz
     version: 0.1.0
+  bowie-public-enemy:
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2023-03-29T13:56:11.643675293Z"
+    dependencies:
+    - name: public-enemy
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.5.6
+    - name: stromae-v2
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.6.0
+    description: A Helm chart for Kubernetes
+    digest: b4f220b7b38b75e3017e4fed6abbe6ac40ff5ba88cd480e8a16b57757324da0f
+    name: bowie-public-enemy
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/bowie-public-enemy-0.1.0/bowie-public-enemy-0.1.0.tgz
+    version: 0.1.0
   coleman-access:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -727,4 +745,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-29T08:37:23.448800694Z"
+generated: "2023-03-29T13:56:11.643847297Z"
