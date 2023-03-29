@@ -433,6 +433,22 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/postgresql-crunchy-instance-0.0.1/postgresql-crunchy-instance-0.0.1.tgz
     version: 0.0.1
+  public-enemy:
+  - apiVersion: v2
+    appVersion: 2.0.0
+    created: "2023-03-29T08:37:23.448588992Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: A Helm chart for Public Enemy API, UI and DB
+    digest: e6322c8c9f5043a76d0aadc31b41b54c2f8f8e95e810d81f8d591eca11cc964b
+    name: public-enemy
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/public-enemy-0.5.6/public-enemy-0.5.6.tgz
+    version: 0.5.6
   queen:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -711,4 +727,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-24T15:50:16.199868853Z"
+generated: "2023-03-29T08:37:23.448800694Z"
