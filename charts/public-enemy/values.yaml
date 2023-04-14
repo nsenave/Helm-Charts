@@ -98,7 +98,7 @@ api:
     # Overrides the image tag whose default is the chart appVersion.
     tag: ""
 
-  profiles: dev
+  profiles: prod
   imagePullSecrets: []
   nameOverride: ""
   fullnameOverride: ""
