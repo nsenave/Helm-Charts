@@ -485,6 +485,21 @@ entries:
   public-enemy:
   - apiVersion: v2
     appVersion: 2.0.0
+    created: "2023-04-27T10:27:09.219368202Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.7
+    description: A Helm chart for Public Enemy API, UI and DB
+    digest: 683d03437af5d3a15af08fc8e056e725f2d02f30bb1b475ab628f78b64dd02bb
+    name: public-enemy
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/public-enemy-0.5.8/public-enemy-0.5.8.tgz
+    version: 0.5.8
+  - apiVersion: v2
+    appVersion: 2.0.0
     created: "2023-04-14T12:36:55.299321578Z"
     dependencies:
     - condition: postgresql.enabled
@@ -791,4 +806,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-04-14T12:36:55.299403768Z"
+generated: "2023-04-27T10:27:09.219480304Z"
