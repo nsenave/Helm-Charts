@@ -62,6 +62,8 @@ spec:
             value: {{ .Values.api.environment.authentification | quote}}
           - name: FR_INSEE_POGUES_ROLE_ADMIN
             value: {{ .Values.api.environment.role.admin | quote}}
+          - name: FR_INSEE_POGUES_STAMP_RESTRICTED
+            value: {{ .Values.api.environment.stamp.restricted | quote}}  
           - name: FR_INSEE_POGUES_ROLE_USER
             value: {{ .Values.api.environment.role.user | quote}}
           - name: FR_INSEE_POGUES_API_REMOTE_METADATA_URL
