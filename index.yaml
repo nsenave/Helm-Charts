@@ -47,6 +47,46 @@ entries:
   bowie:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-06-01T09:50:21.3374143Z"
+    dependencies:
+    - condition: pogues.enabled
+      name: pogues
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.3.0
+    - condition: eno-ws.enabled
+      name: eno-ws
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.2.1
+    - condition: ddi-access-services.enabled
+      name: ddi-access-services
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.1.1
+    - condition: queen.enabled
+      name: queen
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.4.0
+    - alias: queen-v2
+      condition: queen.enabled
+      name: queen
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.4.0
+    - condition: stromae-v2.enabled
+      name: stromae-v2
+      repository: https://inseefr.github.io/Helm-Charts
+      version: 0.6.0
+    - condition: queen.enabled
+      name: drama-queen
+      repository: https://ddecrulle.github.io/helm-charts
+      version: 0.1.3
+    description: Bowie helm-chart
+    digest: 83d01a577493dac0aa678b78ed50695082024777c840e7cfd7229304a42129c0
+    name: bowie
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/bowie-0.1.5/bowie-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-06-01T09:43:56.654893082Z"
     dependencies:
     - condition: pogues.enabled
@@ -932,4 +972,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-01T09:43:56.805482757Z"
+generated: "2023-06-01T09:50:21.3375636Z"
