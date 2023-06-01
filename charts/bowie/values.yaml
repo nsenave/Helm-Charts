@@ -61,6 +61,7 @@ pogues:
             path: ""
           orbeon:
             host: ""
+
         queen:
           host: https://queen-ui.domain.com
           vis:
@@ -168,6 +169,30 @@ queen:
             - queen-ui.domain.com
     env:
       QUEEN_URL: https://queen-ui.domain.com
+      authenticationType: NONE
+
+queen-v2:
+  ui:
+    enabled: true
+    nameOverride: queen-v2-ui
+    replicaCount: 1
+    image:
+      repository: inseefr/queen
+      tag: 1.0.1
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      hosts:
+        - host: queen-v2-ui.domain.com
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - hosts:
+            - queen-ui.domain.com
+    env:
+      QUEEN_URL: https://queen-v2-ui.domain.com
       authenticationType: NONE
 
 stromae-v2:
