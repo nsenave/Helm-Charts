@@ -1,11 +1,11 @@
 apiVersion: v2
 name: bowie
-description: A Helm chart for Kubernetes
+description: Bowie helm-chart
 
 dependencies:
   - name: pogues
     condition: pogues.enabled
-    version: 0.3.0
+    version: 0.2.0
     repository: "https://inseefr.github.io/Helm-Charts"
   - name: eno-ws
     condition: eno-ws.enabled
