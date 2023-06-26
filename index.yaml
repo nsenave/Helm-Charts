@@ -579,6 +579,33 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/pearl-0.0.1/pearl-0.0.1.tgz
     version: 0.0.1
+  platine-access:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-26T15:43:42.571102117Z"
+    description: A Helm chart for Platine Access UI and API
+    digest: 3bad7c69c3b8c6392bbb8fb3b669d38151eef528dc9d0e7e23630f669b3c5f0f
+    name: platine-access
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/platine-access-0.0.2/platine-access-0.0.2.tgz
+    version: 0.0.2
+  platine-management:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-26T15:43:42.79954197Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Stromae API, UI and DB
+    digest: cbe725abf5cb4019135c4848e2af4a184c77f57154be38308fc31286686f8ab5
+    name: platine-management
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/platine-management-0.6.3/platine-management-0.6.3.tgz
+    version: 0.6.3
   pogues:
   - apiVersion: v2
     appVersion: 4.0.7
@@ -972,4 +999,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-01T09:50:21.3375636Z"
+generated: "2023-06-26T15:43:42.799918271Z"
