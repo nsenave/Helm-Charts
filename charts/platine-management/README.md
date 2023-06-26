@@ -1,6 +1,6 @@
 # Platine Management Chart
 
-Helm chart to deploy Co UI, Queen Back Office (Queen and Stromae as the same Back Office) and Postgres database from the chart proposed by Bitami
+Helm chart to deploy Platine Management UI, Platine Management Back Office and Postgres database from the chart proposed by Bitami
 
 This chart is not fully generic but we tried to be as less specific as possible
 
@@ -25,57 +25,6 @@ api:
 ```
 
 Environnement values concerning the database such as host, schema, password and username are already pass to postgres. So we decided to pass them to the api throught the environement values in the `api\deployment.yaml`
-
-## LivenessProb and ReadinessProb :
-
-### API :
-
-This point is visibled in the `api\deployment.yaml`. The choice of values must be perfected.
-
-```yaml
-livenessProbe:
-  failureThreshold: 3
-  httpGet:
-    path: /api/healthcheck
-    port: http
-    scheme: HTTP
-  periodSeconds: 10
-  successThreshold: 1
-  timeoutSeconds: 2
-readinessProbe:
-  failureThreshold: 3
-  httpGet:
-    path: /api/healthcheck
-    port: http
-    scheme: HTTP
-  periodSeconds: 10
-  successThreshold: 1
-  timeoutSeconds: 5
-startupProbe:
-  failureThreshold: 30
-  httpGet:
-    path: /api/healthcheck
-    port: http
-    scheme: HTTP
-  periodSeconds: 10
-  successThreshold: 1
-  timeoutSeconds: 1
-```
-
-### UI:
-
-UI prob's are the classic one automaticaly generated (by `helm create`)
-
-```yaml
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
-```
 
 ## Metrics :construction_worker: 
 

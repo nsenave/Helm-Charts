@@ -1,6 +1,6 @@
 apiVersion: v2
 name: platine-management
-description: A Helm chart for Stromae API, UI and DB
+description: A Helm chart for Platine Management API, UI and DB
 
 dependencies:
   - name: postgresql
@@ -9,5 +9,5 @@ dependencies:
     repository: https://charts.bitnami.com/bitnami
 
 type: application
-version: 0.6.3
+version: 0.6.4
 appVersion: "1.16.0"
