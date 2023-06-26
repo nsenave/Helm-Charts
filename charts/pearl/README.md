@@ -1,4 +1,4 @@
-# pearl Helm Chart
+# Pearl Helm Chart
 
 Helm chart to deploy Pearl Jam, Pearl Jam Back Office and Postgres database from the chart proposed by Bitami
 
