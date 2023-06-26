@@ -2,28 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "coleman-access.ui.fullname" . }}
+  name: {{ include "platine-access.ui.fullname" . }}
   labels:
-    {{- include "coleman-access.ui.labels" . | nindent 4 }}
+    {{- include "platine-access.ui.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.ui.autoscaling.enabled }}
   replicas: {{ .Values.ui.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "coleman-access.ui.selectorLabels" . | nindent 6 }}
+      {{- include "platine-access.ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/ui/configmap.yaml") . | sha256sum }}
       labels:
-        {{- include "coleman-access.ui.selectorLabels" . | nindent 8 }}
+        {{- include "platine-access.ui.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.ui.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "coleman-access.ui.serviceAccountName" . }}
+      serviceAccountName: {{ include "platine-access.ui.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.ui.podSecurityContext | nindent 8 }}
       containers:
@@ -35,7 +35,7 @@ spec:
           {{- if and .Values.ui.env .Values.ui.enabled }}
           envFrom:
             - configMapRef:
-                name: {{ template "coleman-access.ui.fullname" . }}
+                name: {{ template "platine-access.ui.fullname" . }}
           {{- end }}
           ports:
             - name: http

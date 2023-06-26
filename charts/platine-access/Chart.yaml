@@ -1,6 +1,6 @@
 apiVersion: v2
-name: coleman-access
-description: A Helm chart for Coleman Access UI and API
+name: platine-access
+description: A Helm chart for Platine Access UI and API
 
 type: application
 version: 0.0.2

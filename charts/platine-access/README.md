@@ -1,4 +1,4 @@
-# Massive Attack Helm Chart
+# Platine Access Helm Chart
 
 Helm chart to deploy Massive Attack UI and API from the chart proposed by Bitami
 
