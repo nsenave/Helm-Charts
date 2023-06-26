@@ -413,6 +413,16 @@ entries:
   massive-attack:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-06-26T21:08:35.348166586Z"
+    description: A Helm chart for Massive Attack API and UI
+    digest: c536838f60829f4be2decad97afa6e989921bfa848f48f346877104faad58522
+    name: massive-attack
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/massive-attack-0.2.1/massive-attack-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-26T16:19:36.532531597Z"
     description: A Helm chart for Massive Attack API, UI and DB
     digest: db6972ba54b58ace9f3c9bb16e77b398f6d50185fac70d8187fca8e2c271403e
@@ -520,6 +530,16 @@ entries:
   my-surveys:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-06-26T21:08:35.494168075Z"
+    description: A Helm chart for Platine-My-Surveys
+    digest: 047b57c931d848d19fa855293e67d0eb8f01b964007f3891ee5376b6fb3e96c8
+    name: my-surveys
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/my-surveys-0.2.0/my-surveys-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-01-26T16:35:08.681528944Z"
     description: A Helm chart for Moog
     digest: c4dfea92b24f1b0ff2ed3703eeed49c95ded98761cf82d44edcab03d43c5a98a
@@ -549,6 +569,21 @@ entries:
     - https://github.com/InseeFr/Helm-Charts/releases/download/my-surveys-0.0.1/my-surveys-0.0.1.tgz
     version: 0.0.1
   pearl:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-26T21:08:35.670460906Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Pearl API, UI and DB
+    digest: 78f82ac016c73824a54c875181034feae74c5b0882266fe07867ea47ad3b0c18
+    name: pearl
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/pearl-0.1.2/pearl-0.1.2.tgz
+    version: 0.1.2
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-01-26T16:19:37.06106398Z"
@@ -1014,4 +1049,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-26T20:44:00.960286945Z"
+generated: "2023-06-26T21:08:35.670692316Z"
