@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "coleman-management.api.fullname" . }}
+  name: {{ include "platine-management.api.fullname" . }}
   labels: 
-    {{- include "coleman-management.api.labels" . | nindent 4 }}
+    {{- include "platine-management.api.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.api.service.type }}
   ports:
@@ -13,5 +13,5 @@ spec:
       protocol: TCP
       name: http
   selector: 
-    {{- include "coleman-management.api.selectorLabels" . | nindent 4 }}
+    {{- include "platine-management.api.selectorLabels" . | nindent 4 }}
 {{- end }}

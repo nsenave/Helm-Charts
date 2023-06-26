@@ -2,9 +2,9 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "coleman-management.api.fullname" . }}
-  namespace: {{ include "coleman-management.api.serviceMonitor.namespace" . }}
-  labels: {{- include "coleman-management.api.labels" . | nindent 4 }}
+  name: {{ include "platine-management.api.fullname" . }}
+  namespace: {{ include "platine-management.api.serviceMonitor.namespace" . }}
+  labels: {{- include "platine-management.api.labels" . | nindent 4 }}
     app.kubernetes.io/component: metrics  
 spec:
   {{- if .Values.api.metrics.serviceMonitor.jobLabel }}
@@ -12,7 +12,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "coleman-management.api.selectorLabels" . | nindent 6 }}
+      {{- include "platine-management.api.selectorLabels" . | nindent 6 }}
       app.kubernetes.io/component: metrics
   endpoints:
     - port: http-metrics
@@ -27,5 +27,5 @@ spec:
       {{- end }}
   namespaceSelector:
     matchNames:
-      - "{{ include "coleman-management.namespace" . }}"
+      - "{{ include "platine-management.namespace" . }}"
 {{- end }}

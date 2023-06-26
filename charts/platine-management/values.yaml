@@ -1,4 +1,4 @@
-# Default values for coleman-management.
+# Default values for platine-management.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 ui:
@@ -6,7 +6,7 @@ ui:
   replicaCount: 1
 
   image:
-    repository: inseefr/coleman-management
+    repository: inseefr/platine-management
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: ""

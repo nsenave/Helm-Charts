@@ -2,28 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "coleman-management.api.fullname" . }}
+  name: {{ include "platine-management.api.fullname" . }}
   labels:
-    {{- include "coleman-management.api.labels" . | nindent 4 }}
+    {{- include "platine-management.api.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.api.autoscaling.enabled }}
   replicas: {{ .Values.api.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "coleman-management.api.selectorLabels" . | nindent 6 }}
+      {{- include "platine-management.api.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/api/configmap.yaml") . | sha256sum }}
       labels:
-        {{- include "coleman-management.api.selectorLabels" . | nindent 8 }}
+        {{- include "platine-management.api.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.api.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "coleman-management.api.serviceAccountName" . }}
+      serviceAccountName: {{ include "platine-management.api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.api.podSecurityContext | nindent 8 }}
       containers:
@@ -41,7 +41,7 @@ spec:
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "coleman-management.postgresql.fullname" . }}
+                  name: {{ include "platine-management.postgresql.fullname" . }}
                   key: password
             - name: SPRING_DATASOURCE_URL
               value:  {{ $databaseUrl | quote }}
@@ -51,7 +51,7 @@ spec:
           {{- if and .Values.api.env .Values.api.enabled }}
           envFrom:
             - configMapRef:
-                name: {{ template "coleman-management.api.fullname" . }}
+                name: {{ template "platine-management.api.fullname" . }}
           {{- end }}
           ports:
             - name: http

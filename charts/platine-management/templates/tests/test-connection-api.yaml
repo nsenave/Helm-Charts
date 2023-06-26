@@ -1,0 +1,17 @@
+{{- if .Values.api.enabled -}}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "platine-management.api.fullname" . }}-test-connection"
+  labels:
+    {{- include "platine-management.api.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "platine-management.api.fullname" . }}:{{ .Values.api.service.port }}']
+  restartPolicy: Never
+{{- end -}}

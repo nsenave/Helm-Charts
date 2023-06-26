@@ -1,4 +1,4 @@
-# Coleman Management Chart
+# Platine Management Chart
 
 Helm chart to deploy Co UI, Queen Back Office (Queen and Stromae as the same Back Office) and Postgres database from the chart proposed by Bitami
 

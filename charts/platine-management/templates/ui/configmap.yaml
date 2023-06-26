@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ template "coleman-management.ui.fullname" . }}
+  name: {{ template "platine-management.ui.fullname" . }}
   labels:
-    app: {{ template "coleman-management.ui.name" . }}
+    app: {{ template "platine-management.ui.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}

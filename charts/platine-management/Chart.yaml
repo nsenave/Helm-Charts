@@ -1,5 +1,5 @@
 apiVersion: v2
-name: coleman-management
+name: platine-management
 description: A Helm chart for Stromae API, UI and DB
 
 dependencies:
