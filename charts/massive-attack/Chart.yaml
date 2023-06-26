@@ -1,7 +1,7 @@
 apiVersion: v2
 name: massive-attack
-description: A Helm chart for Massive Attack API, UI and DB
+description: A Helm chart for Massive Attack API and UI
 
 type: application
-version: 0.2.0
+version: 0.2.1
 appVersion: "1.16.0"
