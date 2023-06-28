@@ -5,7 +5,7 @@ description: A Helm chart for Pogues, Pogues-BO and bdd
 dependencies:
   - name: postgresql
     condition: postgresql.enabled
-    version: 11.6.15
+    version: 11.9.13
     repository: https://charts.bitnami.com/bitnami
 
 type: application
