@@ -628,6 +628,21 @@ entries:
   platine-management:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-07-25T14:11:21.682273979Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.1.9
+    description: A Helm chart for Platine Management API, UI and DB
+    digest: c61ebaeb597b9d6a39c4e1ad033134c2cef1c06ebcc75dde9c114bce54e09f0c
+    name: platine-management
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/platine-management-0.7.0/platine-management-0.7.0.tgz
+    version: 0.7.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-06-26T20:44:00.960171544Z"
     dependencies:
     - condition: postgresql.enabled
@@ -1049,4 +1064,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-26T21:08:35.670692316Z"
+generated: "2023-07-25T14:11:21.682410381Z"
