@@ -154,7 +154,7 @@ queen:
     replicaCount: 1
     image:
       repository: inseefr/queen
-      tag: 0.10.11
+      tag: 0.10.20
     ingress:
       enabled: true
       annotations:
