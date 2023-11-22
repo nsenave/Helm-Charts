@@ -26,6 +26,12 @@ spec:
       serviceAccountName: {{ include "queen.api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.api.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: check-db-ready
+          image: postgres:14.10
+          command: ['sh', '-c', 
+            until pg_isready -h {{ include "queen.postgresql.fullname" . }} -p {{ .Values.postgresql.auth.port}}; 
+            do echo waiting for database; sleep 2; done;]
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -34,17 +40,15 @@ spec:
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           {{- if .Values.postgresql.enabled }}
           env:
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_PASSWORD
+            - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ include "queen.postgresql.fullname" .}}
                   key: password
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_HOST
-              value:  {{ include "queen.postgresql.fullname" . }}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_USER
+            - name: SPRING_DATASOURCE_URL
+              value:  {{ printf "jdbc:postgresql://%s:%.0f/%s" (include "queen.postgresql.fullname" .) .Values.postgresql.auth.port .Values.postgresql.auth.database | quote }}
+            - name: SPRING_DATASOURCE_USERNAME
               value: {{ .Values.postgresql.auth.username | quote}}
-            - name: FR_INSEE_QUEEN_PERSISTENCE_DATABASE_SCHEMA
-              value: {{ .Values.postgresql.auth.database | quote}}
           {{- end }}
           {{- if and .Values.api.enabled .Values.api.env }}
           envFrom:
