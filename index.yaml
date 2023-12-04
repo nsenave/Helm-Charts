@@ -500,6 +500,22 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/eno-ws-0.2.1/eno-ws-0.2.1.tgz
     version: 0.2.1
+  knowledge:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-12-04T09:49:55.702408908Z"
+    dependencies:
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.15.3
+    description: A Helm chart for Knowledge API, UI and DB
+    digest: 9170d592704f6163e54de98360348fca65b378caf6a94dfe6895c1986b2fb45a
+    name: knowledge
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/knowledge-0.5.1/knowledge-0.5.1.tgz
+    version: 0.5.1
   massive-attack:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -1169,4 +1185,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2023-11-23T11:53:51.22786828Z"
+generated: "2023-12-04T09:49:55.702532058Z"
