@@ -1,0 +1,15 @@
+{{- if and .Values.ui.env .Values.ui.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "knowledge.ui.fullname" . }}
+  labels:
+    app: {{ template "knowledge.ui.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- range $key, $value := .Values.ui.env }}
+  {{ $key }}: {{ $value | quote }}
+{{- end -}}
+{{- end -}}

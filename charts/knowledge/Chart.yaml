@@ -1,0 +1,13 @@
+apiVersion: v2
+name: knowledge
+description: A Helm chart for Knowledge API, UI and DB
+
+dependencies:
+  - name: mongodb
+    condition: mongodb.enabled
+    version: 13.15.3
+    repository: https://charts.bitnami.com/bitnami
+
+type: application
+version: 0.5.1
+appVersion: "1.16.0"
