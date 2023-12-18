@@ -80,6 +80,8 @@ spec:
             value: {{ .Values.api.environment.remote.queen.vis.path | quote}}
           - name: FR_INSEE_POGUES_API_REMOTE_STROMAEV2_VIS_URL
             value: {{ .Values.api.environment.remote.stromaev2.vis.url | quote}}
+          - name: FR_INSEE_POGUES_API_REMOTE_STROMAEV3_VIS_URL
+            value: {{ .Values.api.environment.remote.stromaev3.vis.url | quote}}
           - name: FR_INSEE_POGUES_API_REMOTE_ENO_HOST
             value: {{ .Values.api.environment.remote.eno.host | quote}}
           - name: FR_INSEE_POGUES_API_REMOTE_ENO_SCHEME
