@@ -202,7 +202,7 @@ stromae-v2:
     replicaCount: 1
     image:
       repository: inseefr/stromae
-      tag: 2.2.14
+      tag: 2.4.15
     ingress:
       enabled: true
       annotations:
@@ -225,7 +225,7 @@ stromae-v3:
     replicaCount: 1
     image:
       repository: inseefr/stromae
-      tag: 2.2.14
+      tag: 2.4.15
     ingress:
       enabled: true
       annotations:
