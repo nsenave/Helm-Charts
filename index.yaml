@@ -955,6 +955,21 @@ entries:
   queen:
   - apiVersion: v2
     appVersion: 4.0.0
+    created: "2024-01-17T09:53:08.326153919Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.2.30
+    description: A Helm chart for Queen API, UI and DB
+    digest: 0d64bf851ab27361c4c1ace0da3b4aee943c36d766e90e13fe01581602d5bc69
+    name: queen
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/queen-0.5.2/queen-0.5.2.tgz
+    version: 0.5.2
+  - apiVersion: v2
+    appVersion: 4.0.0
     created: "2024-01-17T08:30:52.394480862Z"
     dependencies:
     - condition: postgresql.enabled
@@ -1260,4 +1275,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-17T08:30:52.394613659Z"
+generated: "2024-01-17T09:53:08.326265197Z"
