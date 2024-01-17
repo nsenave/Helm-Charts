@@ -29,7 +29,7 @@ spec:
 
       initContainers:
         - name: check-db-ready
-          image: postgres:11.6
+          image: postgres:16.1
           command: ['sh', '-c', 
             until pg_isready -h {{ include "queen.postgresql.fullname" . }} -p {{ .Values.postgresql.auth.port}}; 
             do echo waiting for database; sleep 2; done;]

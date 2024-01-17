@@ -5,9 +5,9 @@ description: A Helm chart for Queen API, UI and DB
 dependencies:
   - name: postgresql
     condition: postgresql.enabled
-    version: 12.2.7
+    version: 13.2.30
     repository: https://charts.bitnami.com/bitnami
 
 type: application
-version: 0.5.1
+version: 0.5.2
 appVersion: "4.0.0"
