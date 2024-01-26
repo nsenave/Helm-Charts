@@ -1,3 +1,4 @@
+{{- if .Values.api.enabled -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -27,6 +28,14 @@ spec:
       serviceAccountName: {{ include "pogues.api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.api.podSecurityContext | nindent 8 }}
+      {{- if .Values.postgresql.enabled }}
+      initContainers:
+        - name: check-db-ready
+          image: postgres:11.6
+          command: ['sh', '-c', 
+            until pg_isready -h {{ include "pogues.postgresql.fullname" . }} -p {{ .Values.postgresql.auth.port}}; 
+            do echo waiting for database; sleep 2; done;]
+       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -34,58 +43,23 @@ spec:
           image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.api.image.pullPolicy }}
           env:
-          - name: FR_INSEE_POGUES_FORCE_SSL
-            value: {{ .Values.api.environment.ssl | quote}}
-          - name: FR_INSEE_POGUES_LOG_CONFIGURATION
-            value: {{ .Values.api.environment.log.configuration| quote}}
-          - name: FR_INSEE_POGUES_API_HOST
-            value: {{ .Values.api.environment.api.host | quote}}
-          - name: FR_INSEE_POGUES_API_NAME
-            value: {{ .Values.api.environment.api.name | quote}}
-          - name: FR_INSEE_POGUES_API_SCHEME
-            value: {{ .Values.api.environment.api.scheme | quote}}
+          {{- if .Values.postgresql.enabled }}
           - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_HOST
-            value: {{ .Values.api.environment.persistence.database.host | quote}}
+            value:  {{ .Values.postgresql.fullnameOverride | quote}}
           - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_PORT
-            value: {{ .Values.api.environment.persistence.database.port | quote}}
+            value: 5432
           - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_SCHEMA
             value: {{ .Values.postgresql.auth.database | quote}}
           - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_USER
             value: {{ .Values.postgresql.auth.username | quote}}
           - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_PASSWORD
             value: {{ .Values.postgresql.auth.password | quote}}
-          - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_DRIVER
-            value: {{ .Values.api.environment.persistence.database.driver | quote}}
           - name: FR_INSEE_POGUES_PERSISTENCE_DATABASE_TABLE
-            value: {{ .Values.api.environment.persistence.database.table | quote}}
-          - name: FR_INSEE_POGUES_AUTHENTICATION
-            value: {{ .Values.api.environment.authentification | quote}}
-          - name: FR_INSEE_POGUES_ROLE_ADMIN
-            value: {{ .Values.api.environment.role.admin | quote}}
-          - name: FR_INSEE_POGUES_STAMP_RESTRICTED
-            value: {{ .Values.api.environment.stamp.restricted | quote}}  
-          - name: FR_INSEE_POGUES_ROLE_USER
-            value: {{ .Values.api.environment.role.user | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_METADATA_URL
-            value: {{ .Values.api.environment.remote.metadata.url | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_STROMAE_HOST
-            value: {{ .Values.api.environment.remote.stromae.host | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_STROMAE_VIS_PATH
-            value: {{ .Values.api.environment.remote.stromae.vis.path | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_STROMAE_ORBEON_HOST
-            value: {{ .Values.api.environment.remote.stromae.orbeon.host | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_QUEEN_HOST
-            value: {{ .Values.api.environment.remote.queen.host | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_QUEEN_VIS_PATH
-            value: {{ .Values.api.environment.remote.queen.vis.path | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_STROMAEV2_VIS_URL
-            value: {{ .Values.api.environment.remote.stromaev2.vis.url | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_STROMAEV3_VIS_URL
-            value: {{ .Values.api.environment.remote.stromaev3.vis.url | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_ENO_HOST
-            value: {{ .Values.api.environment.remote.eno.host | quote}}
-          - name: FR_INSEE_POGUES_API_REMOTE_ENO_SCHEME
-            value: {{ .Values.api.environment.remote.eno.scheme | quote}}
+            value: pogues
+          {{- end }}
+          envFrom:
+            - configMapRef:
+                name: {{ template "pogues.api.fullname" . }}
           ports:
             - name: http
               containerPort: 8080
@@ -104,3 +78,4 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+{{- end -}}
