@@ -26,13 +26,14 @@ spec:
       serviceAccountName: {{ include "publicEnemy.api.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.api.podSecurityContext | nindent 8 }}
-
+      {{- if .Values.postgresql.enabled }}
       initContainers:
         - name: check-db-ready
           image: postgres:11.6
           command: ['sh', '-c', 
             until pg_isready -h {{ include "publicEnemy.postgresql.fullname" . }} -p {{ .Values.postgresql.auth.port}}; 
             do echo waiting for database; sleep 2; done;]
+       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
