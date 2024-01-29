@@ -15,7 +15,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/ui/configmap.yaml") 
+        checksum/config: {{ include (print $.Template.BasePath "/ui/configmap.yaml") . | sha256sum }}
       labels:
         {{- include "pogues.ui.selectorLabels" . | nindent 8 }}
     spec:
