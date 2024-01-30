@@ -3,7 +3,7 @@ pogues:
     image:
       repository: inseefr/pogues
       pullPolicy: IfNotPresent
-      tag: 1.4.1
+      tag: 1.5.7
 
     ingress:
       hosts:
