@@ -182,11 +182,13 @@ api:
 postgresql:
   enabled: true
   fullnameOverride: ""
+  nameOverride: ""
   auth:
     username: username
     password: userPassword
     postgresPassword: postgresPassword
     database: database
+    port: 5432
   primary:
     initContainers:
       - name: import-dump

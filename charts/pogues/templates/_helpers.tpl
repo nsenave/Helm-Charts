@@ -4,11 +4,11 @@ Expand the name of the chart.
 
 
 {{- define "pogues.api.name" -}}
-{{- default .Chart.Name .Values.api.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- .Values.api.nameOverride | default (printf "-%s-api" .Chart.Name ) }}
 {{- end }}
 
 {{- define "pogues.ui.name" -}}
-{{- default .Chart.Name .Values.ui.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- .Values.ui.nameOverride | default (printf "-%s-ui" .Chart.Name ) }}
 {{- end }}
 
 {{/*
@@ -43,6 +43,19 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
+{{- define "pogues.postgresql.fullname" -}}
+{{- if .Values.postgresql.fullnameOverride -}}
+{{- .Values.postgresql.fullnameOverride | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- $name := default "postgresql" .Values.postgresql.nameOverride -}}
+{{- if contains $name .Release.Name -}}
+{{- .Release.Name | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+
 {{/*
 Create chart name and version as used by the chart label.
 */}}
@@ -56,6 +69,13 @@ Create chart name and version as used by the chart label.
 
 {{- define "pogues.ui.chart" -}}
 {{- printf "pogues-ui" -}}
+{{- end -}}
+
+{{/*
+Allow the release namespace to be overridden for multi-namespace deployments in combined charts.
+*/}}
+{{- define "pogues.namespace" -}}
+    {{- print .Release.Namespace -}}
 {{- end -}}
 
 {{/*
