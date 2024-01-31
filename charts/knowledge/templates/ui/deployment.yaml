@@ -15,7 +15,9 @@ spec:
   template:
     metadata:
       annotations:
+        {{- if .Values.ui.env }}
         checksum/config: {{ include (print $.Template.BasePath "/ui/configmap.yaml") . | sha256sum }}
+        {{- end }}
       labels:
         {{- include "knowledge.ui.selectorLabels" . | nindent 8 }}
     spec:
