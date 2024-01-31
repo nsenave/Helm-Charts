@@ -855,6 +855,21 @@ entries:
   pogues:
   - apiVersion: v2
     appVersion: 4.0.8
+    created: "2024-01-31T15:55:40.391986074Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: A Helm chart for Pogues, Pogues-BO and bdd
+    digest: 8b69fa434f70c2a6eb6c1e8f9cec27672ab4d91f2ca1212ab2796fbf1ecd3732
+    name: pogues
+    type: application
+    urls:
+    - https://github.com/InseeFr/Helm-Charts/releases/download/pogues-0.3.5/pogues-0.3.5.tgz
+    version: 0.3.5
+  - apiVersion: v2
+    appVersion: 4.0.8
     created: "2024-01-29T08:07:02.493683242Z"
     dependencies:
     - condition: postgresql.enabled
@@ -1350,4 +1365,4 @@ entries:
     urls:
     - https://github.com/InseeFr/Helm-Charts/releases/download/stromae-v2-0.1.0/stromae-v2-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-31T08:25:18.067483028Z"
+generated: "2024-01-31T15:55:40.392140872Z"
