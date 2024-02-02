@@ -170,3 +170,5 @@ enojava:
   tolerations: []
 
   affinity: {}
+
+  env: {}

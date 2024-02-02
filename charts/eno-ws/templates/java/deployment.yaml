@@ -35,10 +35,11 @@ spec:
           image: "{{ .Values.enojava.image.repository }}:{{ .Values.enojava.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.enojava.image.pullPolicy }}
           env:
-            - name: ENO_LEGACY_WS_URL
-              value: {{ .Values.enojava.env.ENO_LEGACY_WS_URL }}
             - name: JAVA_OPTS
               value: '-XX:+UseParallelGC -XX:MaxRAMPercentage=75'
+          envFrom:
+            - configMapRef:
+                name: {{ template "eno-ws.enojava.fullname" . }}
           ports:
             - name: http
               containerPort: 80
