@@ -71,18 +71,12 @@ Common labels
 {{- define "eno-ws.enoxml.labels" -}}
 helm.sh/chart: {{ include "eno-ws.enoxml.chart" . }}
 {{ include "eno-ws.enoxml.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 
 {{- define "eno-ws.enojava.labels" -}}
 helm.sh/chart: {{ include "eno-ws.enojava.chart" . }}
 {{ include "eno-ws.enojava.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-{{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}
 

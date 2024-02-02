@@ -9,8 +9,7 @@ enoxml:
   image:
     repository: inseefr/eno-ws
     pullPolicy: IfNotPresent
-    # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag: "" # Must be overridden
 
   imagePullSecrets: []
   nameOverride: ""
@@ -94,8 +93,7 @@ enojava:
   image:
     repository: inseefr/eno-ws
     pullPolicy: IfNotPresent
-    # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag: "" # Must be overridden
 
   imagePullSecrets: []
   nameOverride: ""

@@ -32,7 +32,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.enojava.securityContext | nindent 12 }}
-          image: "{{ .Values.enojava.image.repository }}:{{ .Values.enojava.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.enojava.image.repository }}:{{ .Values.enojava.image.tag }}"
           imagePullPolicy: {{ .Values.enojava.image.pullPolicy }}
           env:
             - name: JAVA_OPTS
