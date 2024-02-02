@@ -32,7 +32,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.enoxml.securityContext | nindent 12 }}
-          image: "{{ .Values.enoxml.image.repository }}:{{ .Values.enoxml.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.enoxml.image.repository }}:{{ .Values.enoxml.image.tag }}"
           imagePullPolicy: {{ .Values.enoxml.image.pullPolicy }}
           env:
             - name: FR_INSEE_ENOWS_API_SCHEME

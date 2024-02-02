@@ -1,0 +1,17 @@
+{{- if .Values.enojava.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "eno-ws.enojava.fullname" . }}
+  labels:
+    app: {{ template "eno-ws.enojava.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{- if .Values.enojava.env }}
+{{- range $key, $value := .Values.enojava.env }}
+  {{ $key }}: {{ $value | quote }}
+{{- end -}}
+{{- end -}}
+{{- end -}}
