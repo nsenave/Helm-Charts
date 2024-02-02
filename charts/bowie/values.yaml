@@ -86,7 +86,7 @@ eno-ws:
     image:
       repository: inseefr/eno-ws
       pullPolicy: IfNotPresent
-      tag: 1.6.1
+      tag: 3.17.0
     ingress:
       hosts:
         - host: eno-xml.domain.com
